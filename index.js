@@ -1,6 +1,7 @@
 const express = require ('express');
 const mongoose = require ('mongoose');
 const cors =require('cors');
+const dbConnection = require("./db");
 
 
 const app = express();
@@ -8,9 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 
-mongoose.connect("mongodb://127.0.0.1:27017/v_commerceDB")
-.then(() => console.log('v_commerceDB connected successfully'))
-  .catch((err) => console.log('v_commerceDB connection error:', err));
+dbConnection();
 
   const customerDetailsSchema = new mongoose.Schema({
     userName : String,
